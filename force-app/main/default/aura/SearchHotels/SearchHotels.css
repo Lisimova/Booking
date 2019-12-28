@@ -1,0 +1,15 @@
+.THIS {
+    background-color: white;
+}
+
+.THIS.slds-page-header{
+    background-color: #000C72;
+    color: white;
+}
+
+.THIS.slds-p-left_medium {
+    
+    height: 500px;
+    width: 200px;
+    size:300%;
+}

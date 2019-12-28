@@ -1,0 +1,50 @@
+<aura:component>
+    <aura:attribute name="booking" type="Reservation__c" 
+                    default="{ 'sobjectType': 'Reservation__c',
+                        'City__c': '',
+                        'Check_inDate__c': '',
+                        'Check_out_date__c': '',
+                        'Count_of_guests__c': '1',
+                        'First_Name__c': '',
+                        'Last_Name__c': '',
+                        'Email_Address__c': '',
+                        'Room__c': ''}" />
+    
+    <aura:registerEvent name="saveReservation" type="c:SearchedHotels"/>
+    
+    <div class="slds-text-center-right slds-page-center">    
+		<form class="slds-form--stacked slds-form-center slds-text-center-right slds-page-center">
+        	<lightning:layout multipleRows="true">
+        		<lightning:input type="text" aura:id="bookingform" label="First Name"
+                             	name="firstName"
+                             	value="{!v.booking.First_Name__c}"/>
+        		<lightning:input type="text" aura:id="bookingform" label="Last Name"
+                             	name="lastName" required="true"
+                             	value="{!v.booking.Last_Name__c}"/>
+        	</lightning:layout>
+        
+        	<lightning:layout>
+        		<lightning:input type="email" aura:id="bookingform" label="Email Address"
+                             	name="emailAddress" required="true"
+                             	value="{!v.booking.Email_Address__c}"/>
+             
+        	</lightning:layout>
+        
+        	<lightning:layout>
+            	<c:AddServices/>
+        	</lightning:layout>
+        
+        	<lightning:layout>
+        		<lightning:button label="Reserve" 
+                              	  class="slds-button_right"
+                                  variant="success"
+                              	  onclick="{!c.reserve}"/>
+        		<lightning:button label="Cancel" 
+                              	  class="slds-button_right"
+                                  variant="destructive"
+                              	  onclick="{!c.cancel}"/>
+         	</lightning:layout>
+    	</form>
+	</div>
+    
+</aura:component>

@@ -1,0 +1,49 @@
+<aura:component >
+    <aura:attribute name="searchBooking" type="Reservation__c" 
+                    default="{ 'sobjectType': 'Reservation__c',
+                        'City__c': '',
+                        'Check_inDate__c': '',
+                        'Check_out_date__c': '',
+                        'Count_of_guests__c': '1',
+                        'First_Name__c': '',
+                        'Last_Name__c': '',
+                        'Email_Address__c': ''}" />
+    <aura:registerEvent name="searchHotel" type="c:SearchedHotels"/>
+   
+    <!-- CREATE CHOOUSE HOTEL FORM -->
+                
+        <form class="slds-form--stacked">
+            	<lightning:select aura:id="choosehotelform" label="Select a City"
+                                name="choosecity"
+                                required="true"
+                                value="{!v.searchBooking.City__c}">
+               	 	<option value="">choose city...</option>
+        			<option value="NY">NY</option>
+        			<option value="Moscow">Moscow</option>
+                    <option value="Toronto">Toronto</option>
+                    <option value="Beijing">Beijing</option>            	
+                </lightning:select>
+            
+            	<lightning:input type="date" aura:id="checkin" label="Check-in Date"
+                             name="checkindate"
+                             required="true"
+                             value="{!v.searchBooking.Check_inDate__c}"
+                             onblur ="{!c.checkInValidity}"/>
+            	<lightning:input type="date" aura:id="checkout" label="Check-out Date"
+                             required="true"
+                             name="checkoutdate"
+                             value="{!v.searchBooking.Check_out_date__c}"
+                             onblur ="{!c.checkOutValidity}"/>
+            	<lightning:input type="number" aura:id="choosehotelform" label="Count of guests"
+                             name="countofguests"
+                             required="true"
+                             min="1"
+                             step="1"
+                             value="{!v.searchBooking.Count_of_guests__c}"/>
+            	<lightning:button label="Show Hotels" 
+                              class="slds-button_stretch"
+                              variant="brand"
+                              onclick="{!c.clickSearch}"/>
+        </form>
+        <!-- / CREATE CHOOUSE HOTEL FORM -->
+</aura:component>

@@ -1,0 +1,74 @@
+<aura:component controller="SearchHotelController" implements="flexipage:availableForAllPageTypes,force:appHostable,forceCommunity:availableForAllPageTypes" access="global" >
+    <aura:attribute name="mapValues" type="object"/>
+    <aura:attribute name="hotel" type="ID"/>
+    <aura:attribute name="room" type="Room__c"/>
+    <aura:attribute name="selectedRoom" type="Room__c"/>
+    <aura:attribute name="selectedHotel" type="String"/>
+    <aura:attribute name="reservation" type="Reservation__c"/>
+    <aura:attribute name="TotalPrice" type="Decimal" default="v.selectedRoom.Price_per_night__c"/>
+    <aura:attribute name="beer" type="Boolean"/>
+    <aura:attribute name="internet" type="Boolean"/>
+    <aura:attribute name="sauna" type="Boolean"/>
+    
+    <aura:handler name="searchHotel" event="c:SearchedHotels" action="{!c.handleSearchHotel}"/>
+    <aura:handler name="saveReservation" event="c:SearchedHotels" action="{!c.handlesave}"/>
+    <aura:handler name="showRoom" event="c:ShowRoom" action="{!c.handleshowRoom}"/>
+    <aura:handler name="addService" event="c:Services" action="{!c.handleAddService}"/>
+    
+    <!-- PAGE HEADER -->
+    <lightning:layout class="slds-page-header slds-page-header--object-home">
+        <lightning:layoutItem>
+            <lightning:icon iconName="utility:travel_and_places" alternativeText="Alena Booking"/>
+        </lightning:layoutItem>
+        
+        <lightning:layoutItem padding="horizontal-small">
+            <div class="page-section page-header">
+                <h1 class="slds-text-heading--label">Alena Booking</h1>
+                <h2 class="slds-text-heading--medium">Booking Hotel</h2>
+            </div>
+        </lightning:layoutItem>
+    </lightning:layout>
+    <!-- / PAGE HEADER -->
+    <lightning:layout>
+        <lightning:layoutItem padding="around-small" size="3">
+            <c:SearchForm/>
+        </lightning:layoutItem>
+        
+        <lightning:layoutItem>
+    		<div class="slds-p-left_medium slds-p-right_medium" id="book" style="display: block;">
+        		<ul class="slds-list_vertical slds-has-dividers_top-space">
+            
+            		<lightning:accordion allowMultipleSectionsOpen="true">
+            			<aura:iteration items="{!v.mapValues}"  var="mapKey" indexVar="key">
+                			<div class="slds-box slds-box_x-small slds-text-align_center slds-m-around_x-small" style="border: 4px double blue">
+                				
+                                <c:Hotels hotel="{!mapKey.key}"/>
+                 				<lightning:accordionSection label="Show Free Rooms">
+                					<aura:iteration items="{!mapKey.value}" var="mapValue">
+                        				<lightning:layout multipleRows="true">
+                        					<lightning:layoutItem size="12">
+                                                <div class="demo-only slds-grid slds-wrap" style="border: 4px solid">
+                                                  <c:Rooms room ="{!mapValue}"/>
+                                                </div>
+                        					</lightning:layoutItem>
+                        				</lightning:layout>
+                					</aura:iteration>
+                				</lightning:accordionSection>
+                			</div>
+            			</aura:iteration>
+                  	</lightning:accordion>
+                 </ul>
+        	</div>
+            
+            <div  id="roomId" style="display: none;">
+                <h1 style="text-align: left; font-size: 20px;">Room: {!v.selectedRoom.Name}</h1>
+                <h1 style="text-align: left; font-size: 15px; color: blue;"> Total price per room: {!v.TotalPrice}$ </h1>
+                <c:BookingForm/>
+            </div>
+            <div id="successful" style="display: none; color: green; font-size: 20px; ">
+                <lightning:icon iconName="action:approval" alternativeText="Approved" >Room booked successfully. Please, refresh this page.</lightning:icon>
+                Room booked successfully. Please, refresh this page.
+            </div>
+        </lightning:layoutItem>   
+    </lightning:layout>
+</aura:component>

@@ -1,0 +1,28 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+	<aura:attribute name="room" type="Room__c"/>
+    
+    <aura:registerEvent name="showRoom" type="c:ShowRoom"/>
+    <lightning:recordViewForm aura:id="viewForm" recordId="{!v.room.Id}" objectApiName="Room__c">
+        <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+            <div class="slds-size_1-of-2 slds-align_absolute-center">
+                 <lightning:layoutItem size="12">
+                <lightning:outputField fieldName="Name" size="12"/>
+                </lightning:layoutItem>
+            </div>
+            
+            <div class="slds-size_1-of-2 slds-text-align_center">
+                 <lightning:layoutItem size="12">
+                <lightning:outputField fieldName="Price__c" size="12"/>
+                </lightning:layoutItem>
+            </div>   
+        <div class="slds-size_2-of-2">
+             <lightning:layoutItem size="12">
+                <lightning:button label="I'll reserve"
+                          		  class="slds-button_stretch"
+                              	  variant="brand"    
+                              	  onclick="{!c.toggle}"/>
+            </lightning:layoutItem>
+        </div>
+        </div>
+	</lightning:recordViewForm>
+</aura:component>

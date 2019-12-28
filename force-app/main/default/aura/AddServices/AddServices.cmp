@@ -1,0 +1,34 @@
+<aura:component >
+    <aura:attribute name="beer" type="Boolean" default="false"/>
+    <aura:attribute name="internet" type="Boolean" default="false"/>
+    <aura:attribute name="sauna" type="Boolean" default="false"/>
+    
+    <aura:registerEvent name="addService" type="c:Services"/>
+    
+	<lightning:layout>
+        <lightning:input type="toggle" 
+            label="Beer +5$"
+            aura:id="addbeer"
+            class="slds-p-around--small"
+            checked="{!v.beer}"
+            messageToggleActive="Yes"
+            messageToggleInactive="No"
+            onchange="{!c.clickChange}"/>
+        <lightning:input type="toggle" 
+            label="Internet +2$"
+            aura:id="addinternet"
+            class="slds-p-around--small"
+            checked="{!v.internet}"
+            messageToggleActive="Yes"
+            messageToggleInactive="No"
+            onchange="{!c.clickChange}"/>
+        <lightning:input type="toggle" 
+            label="Sauna +10$"
+            aura:id="addsauna"
+            class="slds-p-around--small"
+            checked="{!v.sauna}"
+            messageToggleActive="Yes"
+            messageToggleInactive="No"
+            onchange="{!c.clickChange}"/>
+        </lightning:layout>
+</aura:component>
