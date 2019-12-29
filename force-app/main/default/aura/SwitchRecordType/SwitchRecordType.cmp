@@ -1,0 +1,9 @@
+<aura:component controller="RecordTypeController" implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickActionWithoutHeader" access="GLOBAL">
+    <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:attribute name="Reservation" type="String" default="0122v000002GogMAAS"/>
+    <lightning:button label="{!v.Reservation == '0122v000002GogMAAS' ? 'Switch to Reservation' : 'Switch to Pre-Reservation'}"
+                          		  class="slds-button_stretch"
+                              	  variant="brand"
+                              	  onclick="{!c.switch}"/> 
+
+</aura:component>

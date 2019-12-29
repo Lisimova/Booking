@@ -2,4 +2,4 @@
     <aura:attribute name="beer" type="Boolean"/>
     <aura:attribute name="internet" type="Boolean"/>
     <aura:attribute name="sauna" type="Boolean"/>
-</aura:event>	
+</aura:event>

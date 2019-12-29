@@ -1,2 +1,10 @@
 .THIS {
+    background-color: white;
+}
+.THIS.lightning:outputField{
+    background-color: blue;
+    color: white;
+}
+.THIS .slds-page-header {
+    size: 10px;
 }

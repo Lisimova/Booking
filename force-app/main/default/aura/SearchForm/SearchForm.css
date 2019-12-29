@@ -1,2 +1,7 @@
-.THIS {
+.THIS.slds-form--stacked {
+    background-color: white;
+}
+
+.THIS.slds-button_stretch{
+    background-color: #000C72;
 }
