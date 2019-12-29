@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Check_Date</fullName>
+    <active>false</active>
+    <errorConditionFormula>(Check_inDate__c &lt; Today()) || (Check_out_date__c &lt; Today()) || (Check_inDate__c &gt; Check_out_date__c)</errorConditionFormula>
+    <errorMessage>Please, check your dates</errorMessage>
+</ValidationRule>
