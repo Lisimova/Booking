@@ -1,0 +1,25 @@
+<aura:component implements="flexipage:availableForAllPageTypes" access="global">
+    <aura:attribute name="hotel" type="Id"/>
+    <lightning:recordViewForm aura:id="viewForm" recordId="{!v.hotel}" objectApiName="Hotel__c">
+    	<lightning:layout class="slds-page-header slds-page-header--object-home">
+        	<lightning:layoutItem size="4">
+        		<div class="slds-page-left">
+        			<lightning:outputField fieldName="Picture_IMG__c"/>
+            	</div>
+       		</lightning:layoutItem>
+        
+            <div class="slds-page-right slds-text-align-right">
+        		<lightning:layout multipleRows="true">
+        			<lightning:outputField fieldName="Name"/>
+                    <lightning:outputField fieldName="Description__c"/>
+        		</lightning:layout>
+        	</div>
+    	</lightning:layout> 
+        
+        <lightning:layout>
+            <lightning:layoutItem size="12">
+                <div class="demo-only" style="padding:0.1rem;background:#000C72"/>
+            </lightning:layoutItem>
+        </lightning:layout>
+	</lightning:recordViewForm>
+</aura:component>
